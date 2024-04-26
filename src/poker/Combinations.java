@@ -95,7 +95,32 @@ public class Combinations {
         }
         return pairOfTwo1 && pairOfTwo;
     }
+        public static boolean Pair(List<Card> cards) {
+        Map<String, Integer> cardCounts = new HashMap<>();
+
+        for (Card card : cards) {
+            cardCounts.merge(card.rank, 1, Integer::sum);
+        }
 
 
+        for (int count : cardCounts.values()) {
+            if (count == 2) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean SeniorCard(List<Card> cards) {
+        Card highestCard = cards.get(0);
+
+        for (Card card : cards) {
+            if (card.rank.compareTo(highestCard.rank) > 0) {
+                highestCard = card;
+            }
+        }
+        return false;
+    }
+}
 }
 
