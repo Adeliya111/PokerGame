@@ -88,14 +88,15 @@ public class Combinations {
                 pairOfTwo = true;
             }
             for (int count1 : cardCounts.values()) {
-                if (count == 2 && pairOfTwo == true && count1 != count) {
+                if (count == 2 && pairOfTwo && count1 != count) {
                     pairOfTwo1 = true;
                 }
             }
         }
         return pairOfTwo1 && pairOfTwo;
     }
-        public static boolean Pair(List<Card> cards) {
+
+    public static boolean Pair(List<Card> cards) {
         Map<String, Integer> cardCounts = new HashMap<>();
 
         for (Card card : cards) {
@@ -121,58 +122,5 @@ public class Combinations {
         }
         return false;
     }
-public static boolean Street(List<Card> cards) {
-        Map<String, Integer> cardCounts = new HashMap<>();
-
-        for (Card card : cards) {
-            cardCounts.merge(card.rank, 1, Integer::sum);
-        }
-
-        int consecutiveRanks = 0;
-        for (String rank : cardCounts.keySet()) {
-            if (cardCounts.containsKey(rank)) {
-                consecutiveRanks++;
-                if (consecutiveRanks == 5) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    //public static boolean StreetFlash(List<Cards> cards) {
-    //   Map<CardType, Integer> cardCounts = new HashMap<>();
-
-        //for (Cards card : cards) {
-            //cardCounts.merge(card.cardType, 1, Integer::sum);
-        //}
-
-        //int a = 0;
-        //for (int count : cardCounts.values()) {
-            //if (count == 5) {
-               //a = 1;
-            //}
-        //}
-
-        //int b = 0;
-        //Map<String, Integer> cardCounts1 = new HashMap<>();
-
-        //for (Cards card : cards) {
-            //cardCounts1.merge(card.rank, 1, Integer::sum);
-        //}
-
-        //int consecutiveRanks = 0;
-        //for (String rank : cardCounts1.keySet()) {
-            //if (cardCounts1.containsKey(rank)) {
-                //consecutiveRanks++;
-                //if (consecutiveRanks == 5) {
-                    //b = 1;
-                //}
-            //}
-        //}
-        //if (a == 1&& b == 1) {
-            //return true;
-        //}
-        //return false;
-    //}
 }
+
