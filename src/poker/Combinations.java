@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class Combinations {
 
-    public static boolean Quads(List<Card> cards) {
+    public static boolean quads(List<Card> cards) {
         Map<String, Integer> cardCounts = new HashMap<>();
 
         for (Card card : cards) {
@@ -22,7 +22,7 @@ public class Combinations {
         return false;
     }
 
-    public static boolean Flash(List<Card> cards) {
+    public static boolean flash(List<Card> cards) {
         Map<CardType, Integer> cardCounts = new HashMap<>();
 
         for (Card card : cards) {
@@ -37,7 +37,7 @@ public class Combinations {
         return false;
     }
 
-    public static boolean FullHouse(List<Card> cards) {
+    public static boolean fullHouse(List<Card> cards) {
         Map<String, Integer> cardCounts = new HashMap<>();
 
         for (Card card : cards) {
@@ -57,7 +57,7 @@ public class Combinations {
         return pairOfThree && pairOfTwo;
     }
 
-    public static boolean Three(List<Card> cards) {
+    public static boolean three(List<Card> cards) {
         Map<String, Integer> cardCounts = new HashMap<>();
 
         for (Card card : cards) {
@@ -73,7 +73,7 @@ public class Combinations {
         return false;
     }
 
-    public static boolean TwoPairs(List<Card> cards) {
+    public static boolean twoPairs(List<Card> cards) {
         Map<String, Integer> cardCounts = new HashMap<>();
 
         for (Card card : cards) {
@@ -96,7 +96,7 @@ public class Combinations {
         return pairOfTwo1 && pairOfTwo;
     }
 
-    public static boolean Pair(List<Card> cards) {
+    public static boolean pair(List<Card> cards) {
         Map<String, Integer> cardCounts = new HashMap<>();
 
         for (Card card : cards) {
@@ -112,7 +112,7 @@ public class Combinations {
         return false;
     }
 
-    public static boolean SeniorCard(List<Card> cards) {
+    public static boolean seniorCard(List<Card> cards) {
         Card highestCard = cards.get(0);
 
         for (Card card : cards) {
@@ -122,5 +122,29 @@ public class Combinations {
         }
         return false;
     }
-}
 
+    public static boolean street(List<Card> cards) {
+        Map<String, Integer> cardCounts = new HashMap<>();
+
+        for (Card card : cards) {
+            cardCounts.merge(card.rank, 1, Integer::sum);
+        }
+
+        int consecutiveRanks = 0;
+        for (String rank : cardCounts.keySet()) {
+            if (cardCounts.containsKey(rank)) {
+                consecutiveRanks++;
+                if (consecutiveRanks == 5) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public static boolean StreetFlash(List<Card> cards) {
+        street(cards);
+        flash(cards);
+        return true;
+    }
+}
