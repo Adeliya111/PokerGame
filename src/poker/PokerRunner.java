@@ -18,15 +18,26 @@ public class PokerRunner {
         Player sasha = new Player("Sasha");
         Player karina = new Player("Karina");
 
-        for (int i = 1; i < 6; i++) {
+        Dealer dealer = new Dealer(cards);
+
+        for (int i = 1; i < 3; i++) {
             sasha.addCard(cards.getCard());
             karina.addCard(cards.getCard());
+        }
+
+        for (int i = 1; i < 6; i++) {
+            dealer.dealCard();
         }
 
         System.out.println("Sasha's cards:");
         sasha.showCards();
         System.out.println("\nKarina's cards:");
         karina.showCards();
-    }
-    }
 
+        determineCombinations(sasha);
+        determineCombinations(karina);
+    }
+    private static void determineCombinations(Player player){
+        //player.
+    }
+}
