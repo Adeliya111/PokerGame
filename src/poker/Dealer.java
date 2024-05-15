@@ -1,16 +1,26 @@
 package poker;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Dealer {
-    private final Cards cards;
-    public Dealer(Cards cards) {
-        this.cards = cards;
-    }
+        public List<Card> tableCards = new ArrayList<>();
 
-    public void shuffleDeck() {
-        cards.shuffle();
-    }
+        private final Cards cards;
+        public Dealer(Cards cards) {
+            this.cards = cards;
+        }
 
-    public Card dealCard() {
-        return cards.getCard();
-    }
+        public void shuffleDeck() {
+            cards.shuffle();
+        }
+
+        public void dealCard() {
+            Card card = cards.getCard();
+            tableCards.add(card);
+        }
+
+        public List<Card> getTableCards() {
+            return tableCards;
+        }
 }

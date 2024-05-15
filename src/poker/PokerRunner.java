@@ -1,5 +1,6 @@
 package poker;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Stack;
@@ -34,10 +35,13 @@ public class PokerRunner {
         System.out.println("\nKarina's cards:");
         karina.showCards();
 
-        determineCombinations(sasha);
-        determineCombinations(karina);
+        Combination sashaCombination = determineCombinations(sasha, dealer);
+        Combination karinaCombination = determineCombinations(karina, dealer);
     }
-    private static void determineCombinations(Player player){
-        //player.
+    private static Combination determineCombinations(Player player, Dealer dealer){
+        List<Card> cards = new ArrayList<>();
+        cards.addAll(player.cardsList);
+        cards.addAll(dealer.getTableCards());
+        return HandResolver.resolved(cards);
     }
 }
