@@ -142,7 +142,7 @@ public class Combinations {
         return false;
     }
 
-    public static boolean StreetFlash(List<Card> cards) {
+    public static boolean streetFlash(List<Card> cards) {
         street(cards);
         flash(cards);
         return true;
