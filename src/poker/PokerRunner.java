@@ -13,8 +13,6 @@ public class PokerRunner {
 
         int getCard = new Random().nextInt(3);
 
-        Stack<Card> CardsStack = cards.getCardStack();
-
 
         Player sasha = new Player("Sasha");
         Player karina = new Player("Karina");
@@ -34,9 +32,16 @@ public class PokerRunner {
         sasha.showCards();
         System.out.println("\nKarina's cards:");
         karina.showCards();
+        System.out.println("\nDealer's cards:");
+        dealer.showTableCards();
 
         Combination sashaCombination = determineCombinations(sasha, dealer);
         Combination karinaCombination = determineCombinations(karina, dealer);
+
+        System.out.println("\nSasha's combination :");
+        System.out.println(sashaCombination);
+        System.out.println("\nKarina's combination :");
+        System.out.println(karinaCombination);
     }
     private static Combination determineCombinations(Player player, Dealer dealer){
         List<Card> cards = new ArrayList<>();

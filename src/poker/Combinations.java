@@ -125,18 +125,16 @@ public class Combinations {
 
     public static boolean street(List<Card> cards) {
         Map<String, Integer> cardCounts = new HashMap<>();
+        int count = 0;
 
         for (Card card : cards) {
-            cardCounts.merge(card.rank, 1, Integer::sum);
-        }
-
-        int consecutiveRanks = 0;
-        for (String rank : cardCounts.keySet()) {
-            if (cardCounts.containsKey(rank)) {
-                consecutiveRanks++;
-                if (consecutiveRanks == 5) {
+            if (cardCounts.containsKey(String.valueOf(card))) {
+                count++;
+                if (count == 5) {
                     return true;
                 }
+            } else {
+                count = 0;
             }
         }
         return false;
