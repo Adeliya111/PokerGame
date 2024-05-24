@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 public class Combinations {
+    public static int rankValue(String rank) {
+        return rank.indexOf(rank);
+    }
 
     public static boolean quads(List<Card> cards) {
         Map<String, Integer> cardCounts = new HashMap<>();
@@ -75,26 +78,7 @@ public class Combinations {
     }
 
     public static boolean twoPairs(List<Card> cards) {
-        Map<String, Integer> cardCounts = new HashMap<>();
-
-        for (Card card : cards) {
-            cardCounts.merge(card.rank, 1, Integer::sum);
-        }
-
-        boolean pairOfTwo = false;
-        boolean pairOfTwo1 = false;
-
-        for (int count : cardCounts.values()) {
-            if (count == 2) {
-                pairOfTwo = true;
-            }
-            for (int count1 : cardCounts.values()) {
-                if (count == 2 && pairOfTwo && count1 != count) {
-                    pairOfTwo1 = true;
-                }
-            }
-        }
-        return pairOfTwo1 && pairOfTwo;
+        return pair(cards) && pair(cards);
     }
 
     public static boolean pair(List<Card> cards) {
@@ -125,16 +109,20 @@ public class Combinations {
     }
 
     public static boolean street(List<Card> cards) {
-        List<Card> cards1 = cards.stream().sorted(Comparator.comparing(a -> a.rank)).distinct().toList();
+        List<Card> sortedCards = cards.stream().sorted(Comparator.comparingInt(card -> rankValue(card.rank))).distinct().toList();
 
-        int count = 0;
+        int count = 1;
+        for (int i = 0; i < sortedCards.size() - 1; i++) {
+            int currentRank = rankValue(sortedCards.get(i).rank);
+            int nextRank = rankValue(sortedCards.get(i + 1).rank);
 
-        for (int i = 1; i <= cards1.size(); i++) {
-            Card card = cards1.get(i);
-            Card next = cards1.get(i+1);
-
-            if(card.rank + 1 == next.rank) {
-                count += 1;
+            if (currentRank + 1 == nextRank) {
+                count++;
+                if (count == 5) {
+                    return true;
+                }
+            } else if (currentRank != nextRank) {
+                count = 1; // Reset the count if the sequence breaks
             }
         }
 
@@ -142,9 +130,7 @@ public class Combinations {
     }
 
     public static boolean streetFlash(List<Card> cards) {
-        street(cards);
-        flash(cards);
-        return true;
+        return street(cards) && flash(cards);
     }
 }
 
