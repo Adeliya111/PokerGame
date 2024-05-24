@@ -1,5 +1,6 @@
 package poker;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -124,19 +125,19 @@ public class Combinations {
     }
 
     public static boolean street(List<Card> cards) {
-        Map<String, Integer> cardCounts = new HashMap<>();
+        List<Card> cards1 = cards.stream().sorted(Comparator.comparing(a -> a.rank)).distinct().toList();
+
         int count = 0;
 
-        for (Card card : cards) {
-            if (cardCounts.containsKey(String.valueOf(card))) {
-                count++;
-                if (count == 5) {
-                    return true;
-                }
-            } else {
-                count = 0;
+        for (int i = 1; i <= cards1.size(); i++) {
+            Card card = cards1.get(i);
+            Card next = cards1.get(i+1);
+
+            if(card.rank + 1 == next.rank) {
+                count += 1;
             }
         }
+
         return false;
     }
 
