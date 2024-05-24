@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Combinations {
+
     public static int rankValue(String rank) {
         return rank.indexOf(rank);
     }
