@@ -123,7 +123,7 @@ public class Combinations {
                     return true;
                 }
             } else if (currentRank != nextRank) {
-                count = 1; // Reset the count if the sequence breaks
+                count = 1;
             }
         }
 

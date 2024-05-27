@@ -1,8 +1,8 @@
 package poker;
 
 public enum CardType {
-        SPADES,
-        HEARTS,
-        DIAMONDS,
-        CLUBS
+        SPADES, //пики
+        HEARTS, //черви
+        DIAMONDS, //буби
+        CLUBS //крести
 }
