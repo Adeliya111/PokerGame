@@ -42,6 +42,14 @@ public class PokerRunner {
         System.out.println(sashaCombination);
         System.out.println("\nKarina's combination :");
         System.out.println(karinaCombination);
+
+        if (sashaCombination.compareTo(karinaCombination) > 0) {
+            System.out.println("\nSasha wins!");
+        } else if (sashaCombination.compareTo(karinaCombination) < 0) {
+            System.out.println("\nKarina wins!");
+        } else {
+            System.out.println("\nDraw!");
+        }
     }
     private static Combination determineCombinations(Player player, Dealer dealer){
         List<Card> cards = new ArrayList<>();
