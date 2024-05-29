@@ -7,10 +7,6 @@ import java.util.Map;
 
 public class Combinations {
 
-    public static int rankValue(String rank) {
-        return rank.indexOf(rank);
-    }
-
     public static boolean quads(List<Card> cards) {
         Map<String, Integer> cardCounts = new HashMap<>();
 
@@ -79,7 +75,20 @@ public class Combinations {
     }
 
     public static boolean twoPairs(List<Card> cards) {
-        return pair(cards) && pair(cards);
+        Map<String, Integer> cardCounts = new HashMap<>();
+
+        for (Card card : cards) {
+            cardCounts.merge(card.rank, 1, Integer::sum);
+        }
+
+        int pairCount = 0;
+        for (int count : cardCounts.values()) {
+            if (count == 2) {
+                pairCount++;
+            }
+        }
+
+        return pairCount >= 2;
     }
 
     public static boolean pair(List<Card> cards) {
@@ -110,23 +119,20 @@ public class Combinations {
     }
 
     public static boolean street(List<Card> cards) {
-        List<Card> sortedCards = cards.stream().sorted(Comparator.comparingInt(card -> rankValue(card.rank))).distinct().toList();
+        List<Card> sortedCards = cards.stream().sorted(Comparator.comparing(x -> x.value)).distinct().toList();
 
-        int count = 1;
+        int count = 0;
         for (int i = 0; i < sortedCards.size() - 1; i++) {
-            int currentRank = rankValue(sortedCards.get(i).rank);
-            int nextRank = rankValue(sortedCards.get(i + 1).rank);
+            Card card = sortedCards.get(i);
+            Card nextCard = sortedCards.get(i + 1);
 
-            if (currentRank + 1 == nextRank) {
-                count++;
-                if (count == 5) {
-                    return true;
-                }
-            } else if (currentRank != nextRank) {
-                count = 1;
+            if (card.value + 1 == nextCard.value) {
+                count += 1;
+            }
+            if (count == 5) {
+                return true;
             }
         }
-
         return false;
     }
 

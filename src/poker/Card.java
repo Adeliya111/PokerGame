@@ -5,9 +5,12 @@ public class Card {
 
     public final CardType cardType;
 
-    public Card(String rank, CardType cardType) {
+    public final int value;
+
+    public Card(String rank, CardType cardType, int value) {
         this.rank = rank;
         this.cardType = cardType;
+        this.value = value;
     }
 
     @Override

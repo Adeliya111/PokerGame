@@ -2,8 +2,6 @@ package poker;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-import java.util.Stack;
 
 public class PokerRunner {
     public static void main(String[] args) {
@@ -11,42 +9,40 @@ public class PokerRunner {
         cards.preparationCards();
         cards.shuffle();
 
-        int getCard = new Random().nextInt(3);
 
-
-        Player sasha = new Player("Sasha");
-        Player karina = new Player("Karina");
+        Player first = new Player("First player");
+        Player second = new Player("Second player");
 
         Dealer dealer = new Dealer(cards);
 
         for (int i = 1; i < 3; i++) {
-            sasha.addCard(cards.getCard());
-            karina.addCard(cards.getCard());
+            first.addCard(cards.getCard());
+            second.addCard(cards.getCard());
         }
 
         for (int i = 1; i < 6; i++) {
             dealer.dealCard();
         }
 
-        System.out.println("Sasha's cards:");
-        sasha.showCards();
-        System.out.println("\nKarina's cards:");
-        karina.showCards();
+        System.out.println("First player's cards:");
+        first.showCards();
+        System.out.println("\nSecond player's cards:");
+        second.showCards();
         System.out.println("\nDealer's cards:");
         dealer.showTableCards();
 
-        Combination sashaCombination = determineCombinations(sasha, dealer);
-        Combination karinaCombination = determineCombinations(karina, dealer);
+        Combination firstCombination = determineCombinations(first, dealer);
+        Combination secondCombination = determineCombinations(second, dealer);
 
-        System.out.println("\nSasha's combination :");
-        System.out.println(sashaCombination);
-        System.out.println("\nKarina's combination :");
-        System.out.println(karinaCombination);
+        System.out.println("\nFirst player's combination :");
+        System.out.println(firstCombination);
+        System.out.println("\nSecond player's combination :");
+        System.out.println(secondCombination);
 
-        if (sashaCombination.compareTo(karinaCombination) > 0) {
-            System.out.println("\nSasha wins!");
-        } else if (sashaCombination.compareTo(karinaCombination) < 0) {
-            System.out.println("\nKarina wins!");
+        if (firstCombination.compareTo(secondCombination) < 0) {
+            System.out.println("\nFirst player wins!");
+        } else if (firstCombination.compareTo(secondCombination) > 0) {
+            System.out.println("\nSecond player wins!");
         } else {
             System.out.println("\nDraw!");
         }

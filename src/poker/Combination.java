@@ -9,5 +9,4 @@ public enum Combination {
     PAIR,
     SENIOR_CARD,
     STREET,
-    STREET_FLASH
-}
+    STREET_FLASH}
