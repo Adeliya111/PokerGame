@@ -107,7 +107,7 @@ public class Combinations {
         return false;
     }
 
-    public static boolean seniorCard(List<Card> cards) {
+    public static Card seniorCard(List<Card> cards) {
         Card highestCard = cards.get(0);
 
         for (Card card : cards) {
@@ -115,7 +115,7 @@ public class Combinations {
                 highestCard = card;
             }
         }
-        return false;
+        return highestCard;
     }
 
     public static boolean street(List<Card> cards) {
