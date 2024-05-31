@@ -1,6 +1,7 @@
 package poker;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Player {
@@ -26,5 +27,9 @@ public class Player {
     }
     public void clearCards() {
         cardsList.clear();
+    }
+
+    public Card getBiggestCard() {
+        return cardsList.stream().max(Comparator.comparing(x -> x.value)).orElse(null);
     }
 }

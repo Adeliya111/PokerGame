@@ -1,8 +1,7 @@
 package poker;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
+
 public class PokerRunner {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -18,14 +17,14 @@ public class PokerRunner {
         }
 
         while (true) {
-        System.out.println("Name first player:");
-        String firstName = scanner.nextLine().trim();
+            System.out.println("Name first player:");
+            String firstName = scanner.nextLine().trim();
 
-        System.out.println("Name second player:");
-        String secondName = scanner.nextLine().trim();
+            System.out.println("Name second player:");
+            String secondName = scanner.nextLine().trim();
 
-        Player first = new Player(firstName);
-        Player second = new Player(secondName);
+            Player first = new Player(firstName);
+            Player second = new Player(secondName);
 
             Deck deck = new Deck();
             deck.preparationCards();
@@ -52,21 +51,15 @@ public class PokerRunner {
             System.out.println("\nDealer's cards:");
             dealer.showTableCards();
 
-            Combination firstCombination = determineCombinations(first, dealer);
-            Combination secondCombination = determineCombinations(second, dealer);
+            Combination firstCombination = DetermineWinner.determineCombinations(first, dealer);
+            Combination secondCombination = DetermineWinner.determineCombinations(second, dealer);
 
             System.out.println("\nFirst player's combination:");
             System.out.println(firstCombination);
             System.out.println("\nSecond player's combination:");
             System.out.println(secondCombination);
 
-            if (firstCombination.compareTo(secondCombination) < 0) {
-                System.out.println("\n" + firstName + " wins!");
-            } else if (firstCombination.compareTo(secondCombination) > 0) {
-                System.out.println("\n" + secondName + " wins!");
-            } else {
-                System.out.println("\nDraw!");
-            }
+            DetermineWinner.winnerResolver(first, second, firstCombination, secondCombination, firstName, secondName);
 
             System.out.println("\nDo you want to keep playing?");
             System.out.println("Type yes or no:");
@@ -81,10 +74,5 @@ public class PokerRunner {
 
         scanner.close();
     }
-    private static Combination determineCombinations(Player player, Dealer dealer) {
-        List<Card> cards = new ArrayList<>();
-        cards.addAll(player.cardsList);
-        cards.addAll(dealer.getTableCards());
-        return HandResolver.resolved(cards);
-    }
 }
+

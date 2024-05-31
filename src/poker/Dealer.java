@@ -11,10 +11,6 @@ public class Dealer {
             this.deck = deck;
         }
 
-        public void shuffleDeck() {
-            deck.shuffle();
-        }
-
         public void dealCard() {
             Card card = deck.getCard();
             tableCards.add(card);
