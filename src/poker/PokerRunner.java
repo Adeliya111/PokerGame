@@ -49,7 +49,9 @@ public class PokerRunner {
             System.out.println(secondName + "'s cards:");
             second.showCards();
             System.out.println("\nDealer's cards:");
-            dealer.showTableCards();
+            for (Card card : dealer.getTableCards()) {
+                System.out.println(card);
+            }
 
             Combination firstCombination = DetermineWinner.determineCombinations(first, dealer);
             Combination secondCombination = DetermineWinner.determineCombinations(second, dealer);
