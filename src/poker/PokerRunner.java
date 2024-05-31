@@ -2,16 +2,34 @@ package poker;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class PokerRunner {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
         Cards cards = new Cards();
         cards.preparationCards();
         cards.shuffle();
 
+        System.out.println("Do you want to play?");
+        System.out.println("Type yes or no?");
 
-        Player first = new Player("First player");
-        Player second = new Player("Second player");
+        String command = scanner.nextLine().trim();
+
+        if (command.equalsIgnoreCase("no")) {
+            System.out.println("Exiting");
+            return;
+        }
+
+        System.out.println("Name first player");
+        String firstName = scanner.nextLine().trim();
+
+        System.out.println("Name second player");
+        String secondName = scanner.nextLine().trim();
+
+
+        Player first = new Player(firstName);
+        Player second = new Player(secondName);
 
         Dealer dealer = new Dealer(cards);
 
@@ -24,9 +42,9 @@ public class PokerRunner {
             dealer.dealCard();
         }
 
-        System.out.println("First player's cards:");
+        System.out.println(firstName + "'s cards:");
         first.showCards();
-        System.out.println("\nSecond player's cards:");
+        System.out.println(secondName + "'s cards:");
         second.showCards();
         System.out.println("\nDealer's cards:");
         dealer.showTableCards();
@@ -40,9 +58,9 @@ public class PokerRunner {
         System.out.println(secondCombination);
 
         if (firstCombination.compareTo(secondCombination) < 0) {
-            System.out.println("\nFirst player wins!");
+            System.out.println("\n" + firstName + " wins!");
         } else if (firstCombination.compareTo(secondCombination) > 0) {
-            System.out.println("\nSecond player wins!");
+            System.out.println("\n" + secondName + " wins!");
         } else {
             System.out.println("\nDraw!");
         }
