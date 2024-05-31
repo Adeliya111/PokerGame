@@ -6,17 +6,17 @@ import java.util.List;
 public class Dealer {
         public List<Card> tableCards = new ArrayList<>();
 
-        private final Cards cards;
-        public Dealer(Cards cards) {
-            this.cards = cards;
+        private final Deck deck;
+        public Dealer(Deck deck) {
+            this.deck = deck;
         }
 
         public void shuffleDeck() {
-            cards.shuffle();
+            deck.shuffle();
         }
 
         public void dealCard() {
-            Card card = cards.getCard();
+            Card card = deck.getCard();
             tableCards.add(card);
         }
 

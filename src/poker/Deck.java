@@ -2,7 +2,7 @@ package poker;
 
 import java.util.*;
 
-public class Cards {
+public class Deck {
     List<String> ranks = List.of("2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace");
 
     List<Integer> values = List.of(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14);

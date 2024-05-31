@@ -1,12 +1,13 @@
 package poker;
 
 public enum Combination {
+    STREET_FLASH,
     QUADS,
-    FLASH,
     FULL_HOUSE,
+    FLASH,
+    STREET,
     THREE,
     TWO_PAIRS,
     PAIR,
     SENIOR_CARD,
-    STREET,
-    STREET_FLASH}
+}

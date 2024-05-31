@@ -66,12 +66,12 @@ public class CombTest {
 
     private static void CheckQuads() {
         Card card1 = new Card("7", CardType.CLUBS, 7);
-        Card card2 = new Card("Queen", CardType.CLUBS, 12);
+        Card card2 = new Card("7", CardType.HEARTS, 7);
         Card card3 = new Card("9", CardType.HEARTS, 9);
-        Card card4 = new Card("8", CardType.CLUBS, 8);
+        Card card4 = new Card("7", CardType.SPADES, 7);
         Card card5 = new Card("Jack", CardType.CLUBS, 11);
 
-        Card playerCard1 = new Card("10", CardType.CLUBS, 10);
+        Card playerCard1 = new Card("7", CardType.DIAMONDS, 7);
         Card playerCard2 = new Card("King", CardType.SPADES, 13);
 
         Combination combination = HandResolver.resolved(List.of(card1, card2, card3, card4, card5, playerCard1, playerCard2));
@@ -81,12 +81,12 @@ public class CombTest {
 
     private static void CheckStreetFlash() {
         Card card1 = new Card("7", CardType.CLUBS, 7);
-        Card card2 = new Card("Queen", CardType.DIAMONDS, 12);
-        Card card3 = new Card("9", CardType.CLUBS, 9);
-        Card card4 = new Card("8", CardType.CLUBS, 8);
+        Card card2 = new Card("5", CardType.CLUBS, 5);
+        Card card3 = new Card("Ace", CardType.CLUBS, 14);
+        Card card4 = new Card("2", CardType.HEARTS, 2);
         Card card5 = new Card("Jack", CardType.CLUBS, 11);
 
-        Card playerCard1 = new Card("10", CardType.CLUBS, 10);
+        Card playerCard1 = new Card("Ace", CardType.CLUBS, 14);
         Card playerCard2 = new Card("King", CardType.SPADES, 13);
 
         Combination combination = HandResolver.resolved(List.of(card1, card2, card3, card4, card5, playerCard1, playerCard2));

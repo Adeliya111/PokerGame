@@ -24,4 +24,7 @@ public class Player {
             System.out.println(card);
         }
     }
+    public void clearCards() {
+        cardsList.clear();
+    }
 }

@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Combinations {
+public class CombinationResolver {
 
     public static boolean quads(List<Card> cards) {
         Map<String, Integer> cardCounts = new HashMap<>();
