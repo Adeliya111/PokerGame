@@ -16,10 +16,6 @@ public class Dealer {
             tableCards.add(card);
         }
 
-        public void showTableCards() {
-            System.out.println(tableCards);
-        }
-
         public List<Card> getTableCards() {
             return tableCards;
         }
