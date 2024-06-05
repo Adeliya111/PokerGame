@@ -14,9 +14,9 @@ public class DetermineWinner {
             Card winCard = first.getBiggestCard();
             Card winCard1 = second.getBiggestCard();
             if (winCard1.value > winCard.value) {
-                System.out.println("\n" + secondName + " wins!");
+                System.out.println("\n" + secondName + " wins by highest card!");
             } else if (winCard1.value < winCard.value) {
-                System.out.println("\n" + firstName + " wins!");
+                System.out.println("\n" + firstName + " wins by highest card!");
             } else {
                 System.out.println("\nDraw!");
             }
